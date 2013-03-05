@@ -11,6 +11,10 @@ module.exports = function (socket) {
 
 
   // Send init slices
+  socket.on('feedconfig', function (data){
+    console.log(data)
+  })
+
   setInterval(function () {
 
     socket.emit('slice', {
