@@ -3,27 +3,37 @@
  */
 
 // fake data generator
-var dataGenerator = require('../data/streamdata.js')
-var dataParse     = require('../data/echidna-data/d3container.js')
+var dataGenerator = require('../echidna-data/faker.js')
+var dataParse     = require('../echidna-data/d3container.js')
 
 
 module.exports = function (socket) {
 
+    // Send init slices
+    socket.on('feedconfig', function (data){
+        console.log(data)
+    })
 
-  // Send init slices
-  socket.on('feedconfig', function (data){
-    console.log(data)
-  })
+    for (var i = 0; i < 30; i++) {
 
-  setInterval(function () {
+        socket.emit('slice', {
 
-    socket.emit('slice', {
+          datapoint : dataGenerator.newSlice(5,1,false)
+    
+        });
+        
+    };
 
-      datapoint : dataGenerator.newSlice(5,1,false)[0]
+    setInterval(function () {
 
-    });
-  }, 1000);
-  
+        socket.emit('slice', {
+
+          datapoint : dataGenerator.newSlice(5,1,false)
+    
+        });
+
+      }, 1000);
+      
 
 
 };
