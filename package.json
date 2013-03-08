@@ -8,5 +8,6 @@
     , "jade": ">= 0.0.1"
     , "ejs": ">= 0.0.1"
     , "socket.io": ">= 0.9.6"
+    , "moment":   "latest"
   }
 }

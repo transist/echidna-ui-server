@@ -9,16 +9,23 @@ var dataParse     = require('../echidna-data/d3container.js')
 
 module.exports = function (socket) {
 
+    
+    var count = 5;
     // Send init slices
     socket.on('feedconfig', function (data){
+        
         console.log(data)
+
+        // console.log(JSON.parse( data.count) )
+        // count = JSON.parse( data.count);
+
     })
 
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 50; i++) {
 
         socket.emit('slice', {
 
-          datapoint : dataGenerator.newSlice(5,1,false)
+          datapoint : dataGenerator.newSlice(count ,1,true)
     
         });
         
@@ -28,7 +35,7 @@ module.exports = function (socket) {
 
         socket.emit('slice', {
 
-          datapoint : dataGenerator.newSlice(5,1,false)
+          datapoint : dataGenerator.newSlice(count ,1,false)
     
         });
 
