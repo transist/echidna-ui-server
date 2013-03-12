@@ -22,7 +22,7 @@ module.exports = function (socket) {
 
     setInterval(function () {
 
-        var slice = dataGenerator.newSlice(5);
+        var slice = dataGenerator.newSlice(10);
         slice.setTime( '' + moment() );
 
         socket.emit('slice', slice.toJSON());
