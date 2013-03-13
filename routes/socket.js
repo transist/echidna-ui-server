@@ -30,7 +30,7 @@ module.exports = function (socket) {
 
         console.log(feedconfig.toJSON())
 
-        var slice = dataGenerator.newSlice(feedconfig.count);
+        var slice = dataGenerator.newSlice(feedconfig);
         slice.setTime( '' + moment() );
 
         socket.emit('slice', slice.toJSON());
