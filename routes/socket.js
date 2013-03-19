@@ -18,7 +18,6 @@ module.exports = function (socket) {
     socket.on('feedconfig', function (data){
         
         feedconfig.setData(data);
-        console.log(feedconfig.toJSON())
         // console.log(feedconfig.numberItems)
 
     })
@@ -28,7 +27,6 @@ module.exports = function (socket) {
     setInterval(function () {
 
 
-        console.log(feedconfig.toJSON())
 
         var slice = dataGenerator.newSlice(feedconfig);
         slice.setTime( '' + moment() );
